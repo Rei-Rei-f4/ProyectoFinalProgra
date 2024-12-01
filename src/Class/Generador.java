@@ -15,6 +15,8 @@ public class Generador {
      * @param datosV
      * @return 
      * Ya me quiero dormir, este metodo es usado para generar reportes diarios
+     *  una matriz bidimensional (double[][]) donde cada fila representa un día,
+     * y cada columna representa ventas individuales de ese día.
      */
 
    public static String generadorDiario(double[][] datosV) {
@@ -38,7 +40,9 @@ public class Generador {
         return report.toString() + generarReporteConAyuda(datosV, dia + 1);
         
         /**
-         * 
+         * Genera un reporte para un día específico, incluyendo todas 
+         * las ventas de ese día.
+         * Hace esto de forma recursiva para procesar todos los días.
          */
     }
 }

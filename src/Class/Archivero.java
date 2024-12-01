@@ -23,6 +23,9 @@ public class Archivero {
      * @param ventas
      * @param VCuentas
      * @throws IOException 
+     * 
+     * Se utiliza un BufferedWriter dentro de un bloque 
+     * try-with-resources para garantizar el cierre automático del archivo.
      */
     
      public static void guardarV(String filename, Venta[] ventas, int VCuentas) throws IOException {
@@ -41,8 +44,13 @@ public class Archivero {
      * @param ventas
      * @return
      * @throws IOException 
+     * 
+     * Lee un archivo de texto en formato CSV y 
+     * crea objetos Venta basados en las líneas del archivo.
+     * Almacena estos objetos en el arreglo ventas.
      */
-
+    
+     
     public static int cargarV(String filename, Venta[] ventas) throws IOException {
         int count = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -57,4 +65,6 @@ public class Archivero {
         }
         return count;
     }
+    
+    
 }

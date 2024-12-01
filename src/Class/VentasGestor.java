@@ -14,6 +14,10 @@ public class VentasGestor {
     private int VCuentas;
 
     /**
+     * Un arreglo de objetos de tipo Venta (probablemente otra 
+     * clase que representa una venta individual).
+     * Tiene una capacidad fija, definida al
+     * inicializar la instancia de VentasGestor.
      * 
      * @param capacidad 
      */
@@ -28,6 +32,11 @@ public class VentasGestor {
      * @param dia
      * @param canal
      * @param cantidad 
+     * 
+     * Agrega una nueva venta al arreglo ventas, incrementando 
+     * el contador VCuentas.
+     * Verifica que no se exceda la capacidad máxima;
+     * si está llena, muestra un mensaje de error.
      */
 
     public void registrarV(int dia, int canal, double cantidad) {
@@ -56,6 +65,7 @@ public class VentasGestor {
      * @param canal
      * @param indice
      * @return 
+     * 
      * Método recursivo para sumar ventas de un canal en un día específico
      */
 
@@ -66,7 +76,16 @@ public class VentasGestor {
         return sum + calcularTotalPorCanal(dia, canal, indice + 1);
     }
 
-    // Convierte ventas a matriz bidimensional usando recursividad
+    /**
+     * 
+     * @param dias
+     * @param canales
+     * @return 
+     * 
+     * Convierte el arreglo de ventas en una matriz bidimensional (double[][]).
+     * Cada fila representa un día, y cada columna representa un canal.
+     */
+    
     public double[][] getDatosV(int dias, int canales) {
         double[][] datosV = new double[dias][canales];
         fillDatosV(datosV, 0);
@@ -81,6 +100,7 @@ public class VentasGestor {
     }
     
     /**
-     * 
+     * Recorre el arreglo de ventas de forma recursiva y 
+     * suma las cantidades correspondientes en la matriz datosV.
      */
 }
