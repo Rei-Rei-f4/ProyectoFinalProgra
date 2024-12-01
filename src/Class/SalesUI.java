@@ -13,12 +13,12 @@ import java.io.IOException;
  *
  * @author reiko C4F620
  */
-public class VentasUI {
+public class SalesUI {
 
-    private final VentasGestor gestor;
+    private TheSManager manager;
 
-    public VentasUI(VentasGestor gestor) {
-        this.gestor = gestor;
+    public SalesUI(TheSManager manager) {
+        this.manager = manager;
     }
 
     public void launch() {
@@ -27,43 +27,43 @@ public class VentasUI {
         frame.setSize(600, 400);
 
         JPanel panel = new JPanel(new GridLayout(4, 2));
-        JTextField diaField = new JTextField();
-        JTextField canalField = new JTextField();
-        JTextField cantidadField = new JTextField();
+        JTextField dayField = new JTextField();
+        JTextField channelField = new JTextField();
+        JTextField amountField = new JTextField();
 
-        JButton registerButton = new JButton("Registrar la venta");
-        JButton reportButton = new JButton("Mostrar los reportes");
-        JButton trendButton = new JButton("Detectar las tendencias");
-        JButton saveButton = new JButton("Guardar las ventas");
-        JButton loadButton = new JButton("Cargar las ventas");
+        JButton registerButton = new JButton("Registrar Venta");
+        JButton reportButton = new JButton("Mostrar Reporte");
+        JButton trendButton = new JButton("Detectar Tendencias");
+        JButton saveButton = new JButton("Guardar Ventas");
+        JButton loadButton = new JButton("Cargar Ventas");
 
         registerButton.addActionListener(e -> {
             try {
-                int dia = Integer.parseInt(diaField.getText());
-                int canal = Integer.parseInt(canalField.getText());
-                double cantidad = Double.parseDouble(cantidadField.getText());
-                gestor.registrarV(dia, canal, cantidad);
-                JOptionPane.showMessageDialog(frame, "Venta registrada con éxito.");
+                int day = Integer.parseInt(dayField.getText());
+                int channel = Integer.parseInt(channelField.getText());
+                double amount = Double.parseDouble(amountField.getText());
+                manager.registerSale(day, channel, amount);
+                JOptionPane.showMessageDialog(frame, "Venta registrada.");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(frame, "Error al registrar la venta, intente de nuevo.");
+                JOptionPane.showMessageDialog(frame, "Error al registrar la venta.");
             }
         });
 
         reportButton.addActionListener(e -> {
-            double[][] datosV = gestor.getDatosV(30, 2);
-            String report = Generador.generadorDiario(datosV);
+            double[][] salesData = manager.getSalesData(30, 2);
+            String report = GeneratorREP.generateDailyReport(salesData);
             JOptionPane.showMessageDialog(frame, report);
         });
 
         trendButton.addActionListener(e -> {
-            double[][] datosV = gestor.getDatosV(30, 2);
-            String trends = Analisis.detectarTrend(datosV);
+            double[][] salesData = manager.getSalesData(30, 2);
+            String trends = TrendsAnalyzer.detectTrend(salesData);
             JOptionPane.showMessageDialog(frame, trends);
         });
 
-         saveButton.addActionListener(e -> {
+        saveButton.addActionListener(e -> {
             try {
-                Archivero.guardarV("ventas.txt", gestor.getVentas(), gestor.getVCuentas());
+                Archives.saveSales("ventas.txt", manager.getSales(), manager.getSaleCount());
                 JOptionPane.showMessageDialog(frame, "Ventas guardadas correctamente.");
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(frame, "Error al guardar las ventas.");
@@ -72,20 +72,20 @@ public class VentasUI {
 
         loadButton.addActionListener(e -> {
             try {
-                int count = Archivero.cargarV("ventas.txt", gestor.getVentas());
-                gestor.setVCuentas(count);
+                int count = Archives.loadSales("ventas.txt", manager.getSales());
+                manager.setSaleCount(count);
                 JOptionPane.showMessageDialog(frame, "Ventas cargadas correctamente.");
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(frame, "Error al cargar las ventas.");
             }
-        }); 
+        });
 
         panel.add(new JLabel("Día:"));
-        panel.add(diaField);
+        panel.add(dayField);
         panel.add(new JLabel("Canal:"));
-        panel.add(canalField);
+        panel.add(channelField);
         panel.add(new JLabel("Monto:"));
-        panel.add(cantidadField);
+        panel.add(amountField);
 
         frame.add(panel, BorderLayout.CENTER);
 
@@ -100,4 +100,3 @@ public class VentasUI {
         frame.setVisible(true);
     }
 }
-
