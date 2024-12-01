@@ -17,7 +17,7 @@ public class Venta {
     private int dia;
     private final int canal;
     private final double cantidad;
-    private final int lol;
+
 
 
     public Venta(int canal, int canal1, double cantidad) {
