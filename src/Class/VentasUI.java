@@ -4,15 +4,10 @@
  */
 package Class;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -32,9 +27,9 @@ public class VentasUI {
         frame.setSize(600, 400);
 
         JPanel panel = new JPanel(new GridLayout(4, 2));
-        JTextField dayField = new JTextField();
-        JTextField channelField = new JTextField();
-        JTextField amountField = new JTextField();
+        JTextField diaField = new JTextField();
+        JTextField canalField = new JTextField();
+        JTextField cantidadField = new JTextField();
 
         JButton registerButton = new JButton("Registrar la venta");
         JButton reportButton = new JButton("Mostrar los reportes");
@@ -44,9 +39,9 @@ public class VentasUI {
 
         registerButton.addActionListener(e -> {
             try {
-                int dia = Integer.parseInt(dayField.getText());
-                int canal = Integer.parseInt(channelField.getText());
-                double cantidad = Double.parseDouble(amountField.getText());
+                int dia = Integer.parseInt(diaField.getText());
+                int canal = Integer.parseInt(canalField.getText());
+                double cantidad = Double.parseDouble(cantidadField.getText());
                 gestor.registrarV(dia, canal, cantidad);
                 JOptionPane.showMessageDialog(frame, "Venta registrada con éxito.");
             } catch (Exception ex) {
@@ -86,13 +81,13 @@ public class VentasUI {
         }); 
 
         panel.add(new JLabel("Día:"));
-        panel.add(dayField);
+        panel.add(diaField);
         panel.add(new JLabel("Canal:"));
-        panel.add(channelField);
+        panel.add(canalField);
         panel.add(new JLabel("Monto:"));
-        panel.add(amountField);
+        panel.add(cantidadField);
 
-        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        frame.add(panel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(registerButton);
@@ -100,7 +95,7 @@ public class VentasUI {
         buttonPanel.add(trendButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
-        frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
