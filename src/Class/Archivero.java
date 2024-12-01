@@ -10,7 +10,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 /**
  *
  * @author reiko C4F620
@@ -18,7 +17,6 @@ import java.io.IOException;
 public class Archivero {
 
     /**
-     * 
      * @param filename
      * @param ventas
      * @param VCuentas
@@ -39,7 +37,6 @@ public class Archivero {
     }
      
     /**
-     * 
      * @param filename
      * @param ventas
      * @return
@@ -64,7 +61,5 @@ public class Archivero {
             }
         }
         return count;
-    }
-    
-    
+    } 
 }

@@ -23,8 +23,5 @@ public class Main {
             VentasUI ui = new VentasUI(manager);
             ui.launch();
         }
-    
-        
-        
         
 }

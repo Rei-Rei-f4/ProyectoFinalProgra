@@ -6,7 +6,7 @@ package Class;
 
 /**
  *
- * @author reiko
+ * @author reiko C4F620
  */
 
 public class VentasGestor {

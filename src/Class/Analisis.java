@@ -5,7 +5,6 @@
 package Class;
 
 /**
- *
  * @author reiko C4F620
  * 
  * La clase Analisis encapsula métodos relacionados con el 
@@ -28,7 +27,6 @@ public class Analisis {
     }
 
     /**
-     * 
      * @param datosV
      * @param dia
      * @return 

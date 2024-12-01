@@ -19,10 +19,6 @@ import javax.swing.JTextField;
  * @author reiko C4F620
  */
 public class VentasUI {
-    
-    /**
-     * 
-     */
 
     private final VentasGestor gestor;
 
@@ -87,11 +83,7 @@ public class VentasUI {
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(frame, "Error al cargar las ventas.");
             }
-        });
-        
-        /**
-         * 
-         */
+        }); 
 
         panel.add(new JLabel("Día:"));
         panel.add(dayField);
