@@ -10,12 +10,14 @@ package Class;
  */
 public class Sale {
 
+
     /**
      * Contiene todo lo basico de las ventas, sus fechas, canal etc... Tiene sus
      * constructores y sus get obligatorios
      */
-    private int day, channel;
-    private double amount;
+    private final int day;
+    private final int channel;
+    private final double amount;
 
     public Sale(int day, int channel, double amount) {
         this.day = day;

@@ -14,8 +14,8 @@ public class Archives {
 
     /**
      * @param filename
-     * @param ventas
-     * @param VCuentas
+     * @param sales
+     * @param saleCount
      * @throws IOException
      *
      * Se utiliza un BufferedWriter dentro de un bloque try-with-resources para

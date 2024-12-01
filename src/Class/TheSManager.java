@@ -10,7 +10,7 @@ package Class;
  */
 public class TheSManager {
     
-     private Sale[] sales; // Arreglo para almacenar las ventas
+     private final Sale[] sales; // Arreglo para almacenar las ventas
     private int saleCount; // Contador de ventas registradas
 
     public TheSManager(int capacity) {
@@ -46,6 +46,7 @@ public class TheSManager {
      *
      * @param day
      * @param channel
+     * @param index
      * @return
      *
      * Método recursivo para sumar ventas de un canal en un día específico

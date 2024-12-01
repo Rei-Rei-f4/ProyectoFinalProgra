@@ -11,7 +11,6 @@ package Class;
 public class Main {
 
     /**
-     *
      * @param args
      *
      * Recibe como parámetro un arreglo de cadenas args que contiene argumentos

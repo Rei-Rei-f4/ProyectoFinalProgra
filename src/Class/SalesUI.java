@@ -6,7 +6,8 @@ package Class;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
@@ -15,7 +16,7 @@ import java.io.IOException;
  */
 public class SalesUI {
 
-    private TheSManager manager;
+    private final TheSManager manager;
 
     public SalesUI(TheSManager manager) {
         this.manager = manager;
@@ -37,21 +38,21 @@ public class SalesUI {
         JButton saveButton = new JButton("Guardar Ventas");
         JButton loadButton = new JButton("Cargar Ventas");
 
-        registerButton.addActionListener(e -> {
+        registerButton.addActionListener((ActionEvent e) -> {
             try {
                 int day = Integer.parseInt(dayField.getText());
                 int channel = Integer.parseInt(channelField.getText());
                 double amount = Double.parseDouble(amountField.getText());
                 manager.registerSale(day, channel, amount);
                 JOptionPane.showMessageDialog(frame, "Venta registrada.");
-            } catch (Exception ex) {
+            } catch (HeadlessException | NumberFormatException ex) {
                 JOptionPane.showMessageDialog(frame, "Error al registrar la venta.");
             }
         });
 
         reportButton.addActionListener(e -> {
             double[][] salesData = manager.getSalesData(30, 2);
-            String report = GeneratorREP.generateDailyReport(salesData);
+            String report = ReportGenerator.generateDailyReport(salesData);
             JOptionPane.showMessageDialog(frame, report);
         });
 
