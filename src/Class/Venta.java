@@ -18,10 +18,12 @@ public class Venta {
     private final int canal;
     private final double cantidad;
 
+
     public Venta(int canal, int canal1, double cantidad) {
         this.dia = dia;
         this.canal = canal;
         this.cantidad = cantidad;
+
     }
 
     /**
@@ -45,4 +47,6 @@ public class Venta {
         return cantidad;
     }
 
+    
+    
 }
